@@ -19,10 +19,14 @@ var svg = d3
 var chartGroup = svg.append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
 var parseTime = d3.timeParse("%d-%b")
-d3.csv("./data.csv").then(function(donutData){
-    donutData.forEach(function(dataPoint) {
+d3.csv("./data.csv").then(function(Data){
+    Data.forEach(function(dataPoint) {
         dataPoint.date = parseTime(dataPoint.date);
         dataPoint.morning = +dataPoint.morning;
         dataPoint.evening = +dataPoint.evening;
       });
     console.log(donutData);vv
+
+    id,state,abbr,poverty,povertyMoe,age,ageMoe,
+    income,incomeMoe,healthcare,healthcareLow,
+    healthcareHigh,obesity,obesityLow,obesityHigh,smokes,smokesLow,smokesHigh
