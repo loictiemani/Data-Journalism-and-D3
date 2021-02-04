@@ -392,7 +392,7 @@ var HealthcareLabel = labelsGroupY.append("text")
             .classed("active", false)
             .classed("inactive", true);
         }
-        else if (chosenYAxis === "healthcare") {
+        else if (labelYaxis  === "healthcare") {
           ObesityLabel
             .classed("active", false)
             .classed("inactive", true);
