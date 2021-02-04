@@ -370,7 +370,7 @@ var HealthcareLabel = labelsGroupY.append("text")
         
 
         // changes classes to change bold text for x axis
-        if (chosenYAxis === "obesity") {
+        if (labelYaxis === "obesity") {
           ObesityLabel
             .classed("active", true)
             .classed("inactive", false);
