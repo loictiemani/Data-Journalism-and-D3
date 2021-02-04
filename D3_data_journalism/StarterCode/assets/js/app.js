@@ -29,8 +29,16 @@ var chartGroup = svg.append("g")
  //Retrieve data from the CSV file and execute everything below
 d3.csv("./assets/data/data.csv").then(function(Data){
     Data.forEach(function(dataPoint) {
-      // Parser through the data and cast 
-        dataPoint.poverty = +dataPoint.date;
+      // Parser through the data and cast as numbers
+        dataPoint.poverty = +dataPoint.poverty;
+        dataPoint.povertyMoe = +dataPoint.povertyMoe;
+        dataPoint.age = + dataPoint.age;
+        dataPoint.ageMoe = + dataPoint.ageMoe;
+        dataPoint.income = + dataPoint.income;
+        dataPoint.incomeMoe = + dataPoint.incomeMoe;
+        dataPoint.healthcare = + dataPoint.healthcare;
+
+
 
         dataPoint.obesityLow = +dataPoint.obesityLow;
         dataPoint.obesityHigh = +dataPoint.obesityHigh;
