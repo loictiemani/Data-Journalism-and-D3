@@ -24,6 +24,11 @@ var svg = d3
 var chartGroup = svg.append("g")
   .attr("transform", `translate(${margin.left}, ${margin.top})`);
 
+  // Parameters
+
+  var labelXaxis = "Poverty";
+  var labelYaxis = "obesity"
+
 
 
  //Retrieve data from the CSV file and execute everything below
@@ -51,3 +56,8 @@ d3.csv("./assets/data/data.csv").then(function(Data){
     // id,state,abbr,poverty,povertyMoe,age,ageMoe,
     // income,incomeMoe,healthcare,healthcareLow,
     // healthcareHigh,obesity,obesityLow,obesityHigh,smokes,smokesLow,smokesHigh
+
+    // xLinearScale and yLinearScale 
+
+    var xLinearScale = xscale(Data, labelXaxis);
+    var yLinearScale = yscale(Data, labelYaxis)
