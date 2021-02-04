@@ -349,7 +349,7 @@ var HealthcareLabel = labelsGroupY.append("text")
       if (value !== labelYaxis) {
 
         // replaces chosenYAxis with value
-        chosenYAxis = value;
+        labelYaxis= value;
 
         // functions here found above csv import
         // updates y scale for new data
