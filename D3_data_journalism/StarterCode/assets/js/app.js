@@ -35,7 +35,20 @@ var chartGroup = svg.append("g")
    // create scales
    var xLinearScale = d3.scaleLinear()
    .domain([d3.min(Data, d=> d[labelXaxis])*0.9,  d3.max(data, d => d[labelXaxis])*1.1])
+   .range([0, width]);
+   return xLinearScale;
  }
+
+ // function used for updating y-scale var upon click on axis label
+function yScale(Data, labelYaxis) {
+  // create scales
+  var yLinearScale = d3.scaleLinear()
+    .domain([d3.min(data, d => d[labelYaxis])*0.9, d3.max(data, d => d[labelYaxis])*1.1])
+    .range([height, 0]);
+
+  return yLinearScale;
+}
+
 
 
  //Retrieve data from the CSV file and execute everything below
