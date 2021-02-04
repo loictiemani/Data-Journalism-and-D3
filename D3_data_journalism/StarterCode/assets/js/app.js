@@ -28,7 +28,14 @@ var chartGroup = svg.append("g")
 
   var labelXaxis = "Poverty";
   var labelYaxis = "obesity"
+  
 
+// function used for updating X-Scale var upon click
+ function xScale(Data, labelXaxis) {
+   // create scales
+   var xLinearScale = d3.scaleLinear()
+   .domain([d3.min(Data, d=> d[labelXaxis])*0.9,  d3.max(data, d => d[labelXaxis])*1.1])
+ }
 
 
  //Retrieve data from the CSV file and execute everything below
@@ -59,5 +66,47 @@ d3.csv("./assets/data/data.csv").then(function(Data){
 
     // xLinearScale and yLinearScale 
 
-    var xLinearScale = xscale(Data, labelXaxis);
-    var yLinearScale = yscale(Data, labelYaxis)
+    var xLinearScale = xScale(Data, labelXaxis);
+    var yLinearScale = yScale(Data, labelYaxis)
+
+    // Create initial axis functions
+
+    var bottomAxis = d3.axisBottom(xLinearScale);
+    var leftAxis = d3.axisLeft(yLinearScale);
+
+    //append x axis
+
+     // append x axis
+  var xAxis = chartGroup.append("g")
+  .attr("transform", `translate(0, ${height})`)
+  .call(bottomAxis);
+
+// append y axis
+var yAxis= chartGroup.append("g")
+  // .attr("transform", `translate(0, 0-${height})`)
+  .call(leftAxis);
+
+// append initial circles
+var circlesGroup = chartGroup.selectAll("circle")
+  .data(Data)
+  .enter()
+  .append("circle")
+  .attr("cx", d => xLinearScale(d[labelXAxis]))
+  .attr("cy", d => yLinearScale(d[labelYAxis]))
+  .attr("r", 20)
+  .classed("stateCircle", true);
+
+// append initial circle labels
+//missing the first states in the list
+
+var circlesTextGroup= chartGroup.append("g")
+
+var circlesText = circlesTextGroup.selectAll("text")
+.data(Data)
+.enter()
+.append("text")
+.attr("x", d => xLinearScale(d[labelXAxis]))
+.attr("y", d => yLinearScale(d[labelYAxis]))
+// .attr("dy", "1em")
+.text(d => d.abbr)
+.classed("stateText", true);
