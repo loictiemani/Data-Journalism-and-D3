@@ -381,7 +381,7 @@ var HealthcareLabel = labelsGroupY.append("text")
             .classed("active", false)
             .classed("inactive", true);
         }
-        else if (chosenYAxis === "smokes") {
+        else if (labelYaxis  === "smokes") {
           ObesityLabel
             .classed("active", false)
             .classed("inactive", true);
